@@ -15,12 +15,12 @@ public class PlayerControll : MonoBehaviour {
 			enabled = false;
 			Debug.Log("GAME OVER");
 			Debug.Break();
-			//Destroy(this.gameObject);
+			Destroy(this.gameObject);
 		}
 	}
 	
 	void Update() {
-
+		RenderControl();
 		// Move Left
 		if (Input.GetKeyDown(KeyCode.LeftArrow)) {
 			// Modify position
@@ -90,7 +90,16 @@ public class PlayerControll : MonoBehaviour {
 			lastFall = Time.time;
 		}
 	}
-
+	void RenderControl(){
+		foreach (Transform child in transform) {
+			if(child.position.y > 19) {
+				child.GetComponent<MeshRenderer>().enabled = false;
+			}
+			else{
+				child.GetComponent<MeshRenderer>().enabled = true;
+			}
+		}        
+	}
 
 	bool IsValidGridPos() {        
 		foreach (Transform child in transform) { // one attached to each component by default
