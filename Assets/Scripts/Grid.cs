@@ -4,6 +4,7 @@ using System.Collections;
 public class Grid : MonoBehaviour {
 	public static int w = 10;
 	public static int h = 24; // extra 4 units for buffer
+	public static int gridH = 19;
 	public static Transform[,] grid = new Transform[w,h];
 	// Use this for initialization
 	public static ParticleSystem destroyParticles;
@@ -59,5 +60,14 @@ public class Grid : MonoBehaviour {
 			}
 		}
 	}
-
+	public static int Height(){
+		for(int i = (gridH-1); i >= 0; --i){
+			for(int j = 0; j < w; ++j){
+				if (grid[j,i] != null) {
+					return i;
+				}
+			}
+		}
+		return 0;
+	}
 }

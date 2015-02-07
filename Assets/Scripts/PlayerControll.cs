@@ -7,12 +7,13 @@ public class PlayerControll : MonoBehaviour {
 	float lastFall = 0;
 	// Use this for initialization
 	void Start () {
+		print (Grid.grid);
+		print (Grid.Height());
 		Grid.destroyParticles = particles; 
 		//printGrid();
 		//print (IsValidGridPos());
 		// Default position not valid? Then it's game over
-		if (!IsValidGridPos()) {
-			enabled = false;
+		if (isOver()) {
 			Debug.Log("GAME OVER");
 			Debug.Break();
 			Destroy(this.gameObject);
@@ -92,7 +93,7 @@ public class PlayerControll : MonoBehaviour {
 	}
 	void RenderControl(){
 		foreach (Transform child in transform) {
-			if(child.position.y > 19) {
+			if(child.position.y > (Grid.gridH-1)) {
 				child.GetComponent<MeshRenderer>().enabled = false;
 			}
 			else{
@@ -116,7 +117,14 @@ public class PlayerControll : MonoBehaviour {
 		}
 		return true;
 	}
+	// check if the grid is full
+	bool isOver(){
+		if(Grid.Height() >= (Grid.gridH-1)){
+			return true;
+		}
+		return false;
 	
+	}
 
 
 	void updateGrid() {
