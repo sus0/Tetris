@@ -51,6 +51,7 @@
      <Compile Include="Assets\Scripts\ParticleSystemAutoDestroyer.cs" />
      <Compile Include="Assets\Scripts\PlayerControll.cs" />
      <Compile Include="Assets\Scripts\PrefabAutoDestroyer.cs" />
+     <Compile Include="Assets\Scripts\Score.cs" />
      <Compile Include="Assets\Scripts\Spawner.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>G:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>

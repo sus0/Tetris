@@ -8,6 +8,7 @@ public class Grid : MonoBehaviour {
 	public static Transform[,] grid = new Transform[w,h];
 	// Use this for initialization
 	public static ParticleSystem destroyParticles;
+	public static int score = 0;
 	public static Vector2 RoundVec2(Vector2 v){
 		return new Vector2(Mathf.Round(v.x), Mathf.Round(v.y));
 	}
@@ -24,6 +25,7 @@ public class Grid : MonoBehaviour {
 			Destroy(grid[x, r].gameObject); // gameObject is the inherited memember -- the game object this component is attached to
 			grid[x, r] = null;
 		}
+		score ++;
 	}
 
 	public static void DecreaseRow(int r) {
