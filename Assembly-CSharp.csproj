@@ -49,6 +49,7 @@
      <Compile Include="Assets\Scripts\ChangeCameraPerspective.cs" />
      <Compile Include="Assets\Scripts\Grid.cs" />
      <Compile Include="Assets\Scripts\ParticleSystemAutoDestroyer.cs" />
+     <Compile Include="Assets\Scripts\PauseMenuControl.cs" />
      <Compile Include="Assets\Scripts\PlayerControll.cs" />
      <Compile Include="Assets\Scripts\PrefabAutoDestroyer.cs" />
      <Compile Include="Assets\Scripts\Score.cs" />
