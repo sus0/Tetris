@@ -1,14 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class PlayerControll : MonoBehaviour {
 	public ParticleSystem particles;
 	// Time since last gravity tick
 	float lastFall = 0;
 	// Use this for initialization
+	private int count = 0;
 	void Start () {
-		print (Grid.grid);
-		print (Grid.Height());
+		//print (Grid.grid);
+		//print (Grid.Height());
 		Grid.destroyParticles = particles; 
 		//printGrid();
 		//print (IsValidGridPos());
@@ -65,8 +67,9 @@ public class PlayerControll : MonoBehaviour {
 		
 		// Move Downwards and Fall
 		// Continuously going down if down arrow is pressed
-		else if (Input.GetKey(KeyCode.DownArrow) ||
+		else if (Input.GetKeyDown(KeyCode.DownArrow) ||
 		         Time.time - lastFall >= 1) {
+		
 			// Modify position
 			transform.position += new Vector3(0, -1, 0);
 			
@@ -76,8 +79,14 @@ public class PlayerControll : MonoBehaviour {
 				updateGrid();
 			} else {
 				// It's not valid. revert.
-				transform.position += new Vector3(0, 1, 0);
-				
+				//if (count%2 == 1){
+					//transform.position += new Vector3(0, 1.5f, 0);
+					//count = 0;
+				//}
+				//else {
+					transform.position += new Vector3(0, 1, 0);
+					//count = 0;
+				//}
 				// Clear filled horizontal lines
 				Grid.DeleteFullRows();
 				
@@ -90,7 +99,32 @@ public class PlayerControll : MonoBehaviour {
 			
 			lastFall = Time.time;
 		}
+		
+        //if (Input.GetKey(KeyCode.DownArrow)) {
+        //    count ++;
+        //    // Modify position
+        //    transform.position += new Vector3(0, -0.5f, 0);
+			
+        //    // See if valid
+        //    if (IsValidGridPos()) {
+        //        // It's valid. Update grid.
+        //        updateGrid();
+        //    } else {
+        //        // It's not valid. revert.
+        //        transform.position += new Vector3(0, 0.5f, 0);
+        //        count = 0;
+        //        // Clear filled horizontal lines
+        //        Grid.DeleteFullRows();
+				
+        //        // Spawn next Group
+        //        FindObjectOfType<Spawner>().Spawn();
+				
+        //        // Disable script
+        //        enabled = false;
+        //    }
+        //}
 	}
+
 	void RenderControl(){
 		foreach (Transform child in transform) {
 			if(child.position.y > (Grid.gridH-1)) {
@@ -111,8 +145,8 @@ public class PlayerControll : MonoBehaviour {
 				return false;
 			
 			// Block in grid cell (and not part of same group)?
-			if (Grid.grid[(int)v.x, (int)v.y] != null &&
-			    Grid.grid[(int)v.x, (int)v.y].parent != transform)
+			if (Grid.grid[(int)v.x, (int)Math.Floor(v.y)] != null &&
+			    Grid.grid[(int)v.x, (int)Math.Floor(v.y)].parent != transform)
 				return false;
 		}
 		return true;
