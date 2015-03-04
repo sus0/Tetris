@@ -21,14 +21,14 @@ public class PauseMenuControl : MonoBehaviour {
             UnPauseGame();
         }
     }
-    void PauseGame() {
+    public void PauseGame() {
         animator.enabled = true;
         animator.Play("pausemenu_slidein");
         isPause = true;
         Time.timeScale = 0;
     }
 
-    void UnPauseGame() {
+    public void UnPauseGame() {
         animator.Play("pausemenu_slideout");
         isPause = false;
         Time.timeScale = 1;

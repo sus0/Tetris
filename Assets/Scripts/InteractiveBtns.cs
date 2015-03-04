@@ -10,4 +10,10 @@ public class InteractiveBtns : MonoBehaviour {
 	public void ExitButtonOnClick(){
 		Application.Quit();
 	}
+
+	public void ResumeButtonOnClick(){
+		//Time.timeScale = 1;
+		PauseMenuControl pauseMenu = GameObject.Find("Main Camera").GetComponent<PauseMenuControl>();
+		pauseMenu.UnPauseGame();
+	}
 }
