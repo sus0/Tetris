@@ -47,7 +47,9 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\ChangeCameraPerspective.cs" />
+     <Compile Include="Assets\Scripts\CountDown.cs" />
      <Compile Include="Assets\Scripts\Grid.cs" />
+     <Compile Include="Assets\Scripts\InteractiveBtns.cs" />
      <Compile Include="Assets\Scripts\ParticleSystemAutoDestroyer.cs" />
      <Compile Include="Assets\Scripts\PauseMenuControl.cs" />
      <Compile Include="Assets\Scripts\PlayerControll.cs" />
