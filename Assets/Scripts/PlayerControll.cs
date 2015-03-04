@@ -5,13 +5,15 @@ using System;
 public class PlayerControll : MonoBehaviour {
 	public ParticleSystem particles;
 	// Time since last gravity tick
-	float lastFall = 0;
-	// Use this for initialization
-	private int count = 0;
+			float lastFall = 0;
+	private int count 	   = 0;
+	private int m_nNextBlockIndex;
+
 	void Start () {
 		//print (Grid.grid);
 		//print (Grid.Height());
-		Grid.destroyParticles = particles; 
+		Grid.destroyParticles 	= particles; 
+		m_nNextBlockIndex		= FindObjectOfType<Spawner>().GenerateRandomNumber();
 		//printGrid();
 		//print (IsValidGridPos());
 		// Default position not valid? Then it's game over
@@ -91,7 +93,7 @@ public class PlayerControll : MonoBehaviour {
 				Grid.DeleteFullRows();
 				
 				// Spawn next Group
-				FindObjectOfType<Spawner>().Spawn();
+				FindObjectOfType<Spawner>().Spawn(m_nNextBlockIndex);
 				
 				// Disable script
 				enabled = false;

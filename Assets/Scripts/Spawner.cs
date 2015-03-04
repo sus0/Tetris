@@ -5,18 +5,25 @@ public class Spawner : MonoBehaviour {
 	public GameObject[] prefabs;
 
 	// Use this for initialization
-	void Start () {
-		Spawn ();
+	void Start () 
+	{
+		Spawn (GenerateRandomNumber());
 	
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+	{
 	
 	}
 
-	public void Spawn(){
-		int randomNum = Random.Range(0, prefabs.Length);
-		Instantiate(prefabs[randomNum], transform.position, Quaternion.identity);
+	public int GenerateRandomNumber()
+	{
+		return Random.Range(0, prefabs.Length);
+	}
+
+	public void Spawn( int nIndex )
+	{
+		Instantiate(prefabs[nIndex], transform.position, Quaternion.identity);
 	}
 }
