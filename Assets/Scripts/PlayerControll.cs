@@ -8,7 +8,6 @@ public class PlayerControll : MonoBehaviour {
 			float lastFall = 0;
 	private int count 	   = 0;
 	private int m_nNextBlockIndex;
-	//private GUIRenderer m_guiRenderer;
 
 	void Start () {
 		//print (Grid.grid);
@@ -22,8 +21,9 @@ public class PlayerControll : MonoBehaviour {
 		//print (IsValidGridPos());
 		// Default position not valid? Then it's game over
 		if (isOver()) {
-			Debug.Log("GAME OVER");
-			Debug.Break();
+			//Debug.Log("GAME OVER");
+			//Debug.Break();
+			FindObjectOfType<GUIRenderer> ().GameOver = true;
 			Destroy(this.gameObject);
 		}
 	}
