@@ -7,8 +7,7 @@ public class Spawner : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-		Spawn (GenerateRandomNumber());
-	
+
 	}
 	
 	// Update is called once per frame
@@ -25,5 +24,10 @@ public class Spawner : MonoBehaviour {
 	public void Spawn( int nIndex )
 	{
 		Instantiate(prefabs[nIndex], transform.position, Quaternion.identity);
+	}
+
+	public void SpawnFirstBlock ()
+	{
+		Spawn (GenerateRandomNumber());
 	}
 }

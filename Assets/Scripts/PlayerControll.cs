@@ -8,12 +8,16 @@ public class PlayerControll : MonoBehaviour {
 			float lastFall = 0;
 	private int count 	   = 0;
 	private int m_nNextBlockIndex;
+	//private GUIRenderer m_guiRenderer;
 
 	void Start () {
 		//print (Grid.grid);
 		//print (Grid.Height());
 		Grid.destroyParticles 	= particles; 
 		m_nNextBlockIndex		= FindObjectOfType<Spawner>().GenerateRandomNumber();
+
+		FindObjectOfType<GUIRenderer> ().NextIdx 	  = m_nNextBlockIndex;
+		FindObjectOfType<GUIRenderer> ().EnableRender = true;
 		//printGrid();
 		//print (IsValidGridPos());
 		// Default position not valid? Then it's game over

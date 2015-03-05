@@ -17,7 +17,7 @@ public class CountDown : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-		m_SpawnerScript     	= GameObject.Find ("Spawn").GetComponent<Spawner>();
+		m_SpawnerScript     	= FindObjectOfType<Spawner>();
 		m_SpawnerScript.enabled = false;
 
 		m_One 					= one.GetComponent<Animator>();
@@ -70,6 +70,7 @@ public class CountDown : MonoBehaviour {
 	{
 		yield return new WaitForSeconds (1f); 
 		m_SpawnerScript.enabled = true;
+		m_SpawnerScript.SpawnFirstBlock();
 		m_One.enabled 			= false;
 		m_Two.enabled 			= false;
 		m_Three.enabled 		= false;
